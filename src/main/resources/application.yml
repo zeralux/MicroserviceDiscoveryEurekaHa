@@ -1,0 +1,29 @@
+#共用
+spring:
+   application:
+      name: microservice-discovery-eureka-ha
+eureka:
+   client: 
+      serviceUrl: 
+         defaultZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/ #欲註冊與查詢之eureka server地址
+ 
+---
+#peer1        
+spring:
+   profiles: peer1
+server:
+   port: 8761
+eureka:
+   instance:
+      hostname: peer1 #eureka server主機名稱
+          
+---
+#peer2        
+spring:
+   profiles: peer2
+server:
+   port: 8762
+eureka:
+   instance:
+      hostname: peer2 #eureka server主機名稱
+   
